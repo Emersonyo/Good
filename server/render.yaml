@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: emerson-api
+    env: node
+    plan: standard
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: LLM_TEMPERATURE
+        value: '0.2'
+      - key: LLM_MAX_TOKENS
+        value: '800'
+    healthCheckPath: /
+    region: oregon
